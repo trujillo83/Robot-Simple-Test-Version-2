@@ -11,6 +11,9 @@ Resource            lib/keywords.resource
 
 Test Setup          Get Current Date As Datetime Format
 
+*** Variables ***
+@{LIST_OF_RESTAURANTS}    ${RESTAURANT_NAME_1}    ${RESTAURANT_NAME_2}    ${RESTAURANT_NAME_3}    ${RESTAURANT_NAME_4}
+
 *** Test Cases ***
 Get menu of the day
     [Documentation]    Get menus of the day from your favorite restaurants
