@@ -12,6 +12,11 @@ Resource            lib/keywords.resource
 Test Setup          Get Current Date As Datetime Format
 
 *** Variables ***
+${RESTAURANT_1}    %{RESTAURANT_NAME_1}
+${RESTAURANT_2}    %{RESTAURANT_NAME_2}
+${RESTAURANT_3}    %{RESTAURANT_NAME_3}
+${RESTAURANT_4}    %{RESTAURANT_NAME_4}
+
 @{LIST_OF_RESTAURANTS}    ${RESTAURANT_NAME_1}    ${RESTAURANT_NAME_2}    ${RESTAURANT_NAME_3}    ${RESTAURANT_NAME_4}
 
 *** Test Cases ***
