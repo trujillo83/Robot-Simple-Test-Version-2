@@ -25,13 +25,8 @@ Search In Webpage For Elements In File
     [Arguments]    @{list_of_restaurants}
     ${MENUS_LIST}=    Create List
     FOR    ${element_in_list}    IN    @{list_of_restaurants}
-        Click Element    //*[@id="navi"]/a[1]
-        Sleep    1
-        Input Text    //body/div[1]/div[2]/div[2]/div[1]/form[1]/input[1]    ${element_in_list}
-        Click Element    //button[contains(text(),'Hae')]
-        Sleep    1
-        ${whole_day_menu}=    Get Text Using Keyword    //body/div[5]/div[1]/div[2]/div[1]/div[2]
-        Append To List    ${MENUS_LIST}    ${whole_day_menu}
+        ${day_menu}    Look For Text and Get Text    ${element_in_list}
+        Append To List    ${MENUS_LIST}    ${day_menu}
     END
     Set Test Variable    ${MENUS_LIST}
     Set Test Variable    ${RESTAURANTS_LIST}    ${list_of_restaurants}
@@ -42,3 +37,13 @@ Create File With Found Menus
     Log Many    @{MENUS_LIST}
     Write To File    ${file_name_to_write}    ${MENUS_LIST}    ${RESTAURANTS_LIST}    ${DATETIME}
 
+Look For Text and Get Text
+    [Documentation]    Search in webpage with given text
+    [Arguments]    ${search_text}
+    Click Element    //*[@id="navi"]/a[1]
+    Sleep    1
+    Input Text    //body/div[1]/div[2]/div[2]/div[1]/form[1]/input[1]    ${search_text}
+    Click Element    //button[contains(text(),'Hae')]
+    Sleep    1
+    ${whole_day_menu}    Get Text Using Keyword    //body/div[5]/div[1]/div[2]/div[1]/div[2]
+    RETURN    ${whole_day_menu}
