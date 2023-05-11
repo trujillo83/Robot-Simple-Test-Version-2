@@ -28,7 +28,7 @@ def write_to_file(file_name, data_to_write, restaurant_names, on_date=datetime.d
         on_date (str): date time
 
     """
-    with open(file_name, "w") as file:
+    with open(file_name, "w+") as file:
         file.write(str(on_date))
         file.write('\n\n')
         for item in range(len(restaurant_names)):
