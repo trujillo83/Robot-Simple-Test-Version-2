@@ -6,6 +6,7 @@ Documentation       keywords used in get_menu.robot suite
 Open Web Page
     [Documentation]    open webpage where test will run
     Open Browser    ${HOMEPAGE}    ${BROWSER}
+    Maximize Browser Window
 
 Get Current Date As Datetime Format
     [Documentation]    get the current date in computer where running test
