@@ -22,5 +22,5 @@ Get menus of the day
     [Documentation]    Get menus of the day from your favorite restaurants
     Open Web Page
     Maximize Browser Window
-    Search In Webpage For Elements In File    @{LIST_OF_RESTAURANTS}
+    Search In Webpage For Elements In List    @{LIST_OF_RESTAURANTS}
     Create File With Found Menus    ${PATH_FILE_TO_WRITE}
