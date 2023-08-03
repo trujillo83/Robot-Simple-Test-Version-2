@@ -34,12 +34,13 @@ Create File With Found Menus
 Look For Element and Get Text
     [Documentation]    Search in webpage with given element
     [Arguments]    ${search_element}
-    Click Element    //*[@id="navi"]/a[1]
+    Click Element    ${ID_BUTTON_OPEN_SEARCH}
     Sleep    1
-    Input Text    //body/div[1]/div[2]/div[2]/div[1]/form[1]/input[1]    ${search_element}
-    Click Element    //button[contains(text(),'Hae')]
+    Input Text    ${ID_TEXT_INPUT_ELEMENT}    ${search_element}
+    Click Element    ${ID_BUTTON_SEARCH}
     Sleep    1
-    ${whole_day_menu}    Get Text Using Keyword    //body/div[5]/div[1]/div[2]/div[1]/div[2]
+    ${whole_day_menu}    Get Text Using Keyword    ${ID_TEXT_MENU}
+
     RETURN    ${whole_day_menu}
 
 Get Text Using Keyword
@@ -48,3 +49,11 @@ Get Text Using Keyword
     ${xpath}=    Set Variable    ${element_path}
     ${text}=    Get Text    xpath=(${xpath})
     RETURN    ${text}
+
+Accept Cookies If Asked
+    ${status_ok}=    Run Keyword And Return Status    Element Should Be Visible    ${ID_BUTTON_COOKIES}
+    IF    ${status_ok}
+        Click Element    ${ID_BUTTON_COOKIES}
+    ELSE
+        CONTINUE
+    END
