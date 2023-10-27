@@ -1,11 +1,13 @@
 *** Settings ***
 Documentation       keywords used in get_menu.robot suite
+Library             chromedriversync.py
 
 
 *** Keywords ***
 Open Web Page
     [Documentation]    open webpage where test will run
-    Open Browser    ${HOMEPAGE}    ${BROWSER}
+    ${chromedriver_path}=   chromedriversync.Get Chromedriver Path
+    Open Browser    ${HOMEPAGE}    ${BROWSER}    executable_path=${chromedriver_path}
     Maximize Browser Window
 
 Get Current Date As Datetime Format

@@ -11,10 +11,14 @@ Resource            lib/keywords.resource
 Test Setup          Get Current Date As Datetime Format
 
 *** Variables ***
-${RESTAURANT_1}    %{RESTAURANT_NAME_1}
-${RESTAURANT_2}    %{RESTAURANT_NAME_2}
-${RESTAURANT_3}    %{RESTAURANT_NAME_3}
-${RESTAURANT_4}    %{RESTAURANT_NAME_4}
+#${RESTAURANT_1}    %{RESTAURANT_NAME_1}
+#${RESTAURANT_2}    %{RESTAURANT_NAME_2}
+#${RESTAURANT_3}    %{RESTAURANT_NAME_3}
+#${RESTAURANT_4}    %{RESTAURANT_NAME_4}
+${RESTAURANT_1}    sodexo hermia 6
+${RESTAURANT_2}    antell hermian farmi
+${RESTAURANT_3}    Il posto hervanta
+${RESTAURANT_4}    Nekalan Patakunkku
 @{LIST_OF_RESTAURANTS}    ${RESTAURANT_1}    ${RESTAURANT_2}    ${RESTAURANT_3}    ${RESTAURANT_4}
 
 *** Test Cases ***
