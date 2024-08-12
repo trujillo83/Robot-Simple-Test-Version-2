@@ -1,13 +1,23 @@
 *** Settings ***
 Documentation       keywords used in get_menu.robot suite
-Library             chromedriversync.py
+Library             Collections
+Library             DateTime
+Library             String
+Library             SeleniumLibrary
+Library             custom_library.py
 
 
 *** Keywords ***
+
+Initialize Browser For Test
+    Get Current Date As Datetime Format
+    Open Web Page
+    Maximize Browser Window
+    Accept Cookies If Asked
+
 Open Web Page
     [Documentation]    open webpage where test will run
-    ${chromedriver_path}=   chromedriversync.Get Chromedriver Path
-    Open Browser    ${HOMEPAGE}    ${BROWSER}    executable_path=${chromedriver_path}
+    Open Browser    ${HOMEPAGE}    ${BROWSER}
     Maximize Browser Window
 
 Get Current Date As Datetime Format
@@ -41,16 +51,9 @@ Look For Element and Get Text
     Input Text    ${ID_TEXT_INPUT_ELEMENT}    ${search_element}
     Click Element    ${ID_BUTTON_SEARCH}
     Sleep    1
-    ${whole_day_menu}    Get Text Using Keyword    ${ID_TEXT_MENU}
+    ${whole_day_menu}    Get Text    ${ID_TEXT_MENU}
 
     RETURN    ${whole_day_menu}
-
-Get Text Using Keyword
-    [Documentation]    get the text in webpage using an specific element path
-    [Arguments]    ${element_path}
-    ${xpath}=    Set Variable    ${element_path}
-    ${text}=    Get Text    xpath=(${xpath})
-    RETURN    ${text}
 
 Accept Cookies If Asked
     ${status_ok}=    Run Keyword And Return Status    Element Should Be Visible    ${ID_BUTTON_COOKIES}
