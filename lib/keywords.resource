@@ -56,9 +56,12 @@ Look For Element and Get Text
     RETURN    ${whole_day_menu}
 
 Accept Cookies If Asked
-    ${status_ok}=    Run Keyword And Return Status    Element Should Be Visible    ${ID_BUTTON_COOKIES}
+    ${status_ok}=    Run Keyword And Return Status
+    ...    Wait Until Page Contains Element
+    ...    ${ID_BUTTON_COOKIES}
+    ...    timeout=2s
     IF    ${status_ok}
         Click Element    ${ID_BUTTON_COOKIES}
     ELSE
-        CONTINUE
+        Log To Console    No pop-up window with cookies seen
     END

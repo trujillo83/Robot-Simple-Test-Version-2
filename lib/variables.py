@@ -1,5 +1,5 @@
 HOMEPAGE = "https://www.lounaat.info/"
-BROWSER = "Chrome"
+BROWSER = "Headlesschrome"
 PATH_FILE_TO_WRITE = "${CURDIR}/../file_resources/menus_list.txt"
 ID_BUTTON_COOKIES = "//*[@id='qc-cmp2-ui']/div[2]/div/button[3]"
 ID_TEXT_INPUT_ELEMENT = "//div[@class='form-container']//input[@data-lounaat-element='query']"
