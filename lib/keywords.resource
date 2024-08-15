@@ -46,11 +46,11 @@ Create File With Found Menus
 Look For Element and Get Text
     [Documentation]    Search in webpage with given element
     [Arguments]    ${search_element}
+    Wait Until Page Contains Element    ${ID_BUTTON_OPEN_SEARCH}    timeout=5s
     Click Element    ${ID_BUTTON_OPEN_SEARCH}
-    Sleep    1
+    Wait Until Page Contains Element    ${ID_TEXT_INPUT_ELEMENT}    timeout=5s
     Input Text    ${ID_TEXT_INPUT_ELEMENT}    ${search_element}
     Click Element    ${ID_BUTTON_SEARCH}
-    Sleep    1
     ${whole_day_menu}    Get Text    ${ID_TEXT_MENU}
 
     RETURN    ${whole_day_menu}
