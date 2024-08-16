@@ -7,8 +7,10 @@ Library             SeleniumLibrary
 Library             custom_library.py
 
 
-*** Keywords ***
+*** Variables ***
+${MAX_RETRIES}    5
 
+*** Keywords ***
 Initialize Browser For Test
     Get Current Date As Datetime Format
     Open Web Page
@@ -31,7 +33,7 @@ Search In Webpage For Elements In List
     [Arguments]    @{list_of_restaurants}
     ${MENUS_LIST}=    Create List
     FOR    ${element_in_list}    IN    @{list_of_restaurants}
-        ${day_menu}    Look For Element and Get Text    ${element_in_list}
+        ${day_menu}    Retry Keyword Until Success    Look For Element and Get Text    ${element_in_list}
         Append To List    ${MENUS_LIST}    ${day_menu}
     END
     Set Test Variable    ${MENUS_LIST}
@@ -48,7 +50,7 @@ Look For Element and Get Text
     [Arguments]    ${search_element}
     Wait Until Page Contains Element    ${ID_BUTTON_OPEN_SEARCH}    timeout=5s
     Click Element    ${ID_BUTTON_OPEN_SEARCH}
-    Wait Until Page Contains Element    ${ID_TEXT_INPUT_ELEMENT}    timeout=5s
+    Sleep  2s
     Input Text    ${ID_TEXT_INPUT_ELEMENT}    ${search_element}
     Click Element    ${ID_BUTTON_SEARCH}
     ${whole_day_menu}    Get Text    ${ID_TEXT_MENU}
@@ -64,4 +66,19 @@ Accept Cookies If Asked
         Click Element    ${ID_BUTTON_COOKIES}
     ELSE
         Log To Console    No pop-up window with cookies seen
+    END
+
+Retry Keyword Until Success
+    [Arguments]    ${keyword}    ${args}
+    FOR    ${index}    IN RANGE    ${MAX_RETRIES}
+        ${result}    Run Keyword And Ignore Error    ${keyword}    ${args}
+        IF  '${result}[0]' == 'PASS'
+            RETURN  ${result}[1]
+            Exit For Loop
+        ELSE IF     ${index}==(${MAX_RETRIES}-1)
+            Fail    Keyword '${keyword}' failed after ${MAX_RETRIES} retries.
+        ELSE
+            ${sleep_time}    Evaluate    1+${index}
+            Sleep    ${sleep_time}s
+        END
     END
