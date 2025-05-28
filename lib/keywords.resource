@@ -15,9 +15,9 @@ Initialize Browser For Test
     Get Current Date As Datetime Format
     Open Web Page
     #Maximize Browser Window
-    Set Window Size	    800	    600	    True
     Accept Cookies If Asked
     Close Ad If seen
+
 
 Close Ad If seen
         ${status_ok}=    Run Keyword And Return Status
@@ -61,6 +61,7 @@ Create File With Found Menus
 Look For Element and Get Text
     [Documentation]    Search in webpage with given element
     [Arguments]    ${search_element}
+    [Setup]    Press submenu if seen
     Wait Until Page Contains Element    ${ID_BUTTON_OPEN_SEARCH}    timeout=5s
     Click Element    ${ID_BUTTON_OPEN_SEARCH}
     Sleep  2s
@@ -79,6 +80,17 @@ Accept Cookies If Asked
         Click Element    ${ID_BUTTON_COOKIES}
     ELSE
         Log To Console    No pop-up window with cookies seen
+    END
+
+Press submenu if seen
+    ${status_ok}=    Run Keyword And Return Status
+    ...    Wait Until Page Contains Element
+    ...    ${ID_BUTTON_SUBMENU}
+    ...    timeout=2s
+    IF    ${status_ok}
+        Click Element    ${ID_BUTTON_SUBMENU}
+    ELSE
+        Log To Console    No submenu is seen
     END
 
 Retry Keyword Until Success
