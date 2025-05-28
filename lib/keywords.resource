@@ -16,6 +16,18 @@ Initialize Browser For Test
     Open Web Page
     Maximize Browser Window
     Accept Cookies If Asked
+    Close Ad If seen
+
+Close Ad If seen
+        ${status_ok}=    Run Keyword And Return Status
+    ...    Wait Until Page Contains Element
+    ...    ${ID_BUTTON_AD}
+    ...    timeout=2s
+    IF    ${status_ok}
+        Click Element    ${ID_BUTTON_AD}
+    ELSE
+        Log To Console    No ad seen
+    END
 
 Open Web Page
     [Documentation]    open webpage where test will run
