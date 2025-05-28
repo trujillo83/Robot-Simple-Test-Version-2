@@ -14,7 +14,8 @@ ${MAX_RETRIES}    5
 Initialize Browser For Test
     Get Current Date As Datetime Format
     Open Web Page
-    Maximize Browser Window
+    #Maximize Browser Window
+    Set Window Size	    800	    600	    True
     Accept Cookies If Asked
     Close Ad If seen
 
