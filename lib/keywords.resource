@@ -33,7 +33,8 @@ Close Ad If seen
 Open Web Page
     [Documentation]    open webpage where test will run
     Open Browser    ${HOMEPAGE}    ${BROWSER}
-    Maximize Browser Window
+    Set Window Size    800    600
+    #Maximize Browser Window
 
 Get Current Date As Datetime Format
     [Documentation]    get the current date in computer where running test
