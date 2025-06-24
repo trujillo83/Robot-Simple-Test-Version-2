@@ -1,5 +1,6 @@
 HOMEPAGE = "https://www.lounaat.info/"
-BROWSER = "Headlesschrome"
+# BROWSER = "Headlesschrome"
+BROWSER = "chrome"
 PATH_FILE_TO_WRITE = "${CURDIR}/../file_resources/menus_list.txt"
 ID_BUTTON_COOKIES = "//*[@id='qc-cmp2-ui']/div[2]/div/button[3]"
 ID_BUTTON_AD = "//div[@class='banner-close']"
