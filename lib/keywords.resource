@@ -32,7 +32,7 @@ Close Ad If seen
 
 Open Web Page
     [Documentation]    open webpage where test will run
-    Open Browser    ${HOMEPAGE}    ${BROWSER}
+    Open Browser    ${HOMEPAGE}    ${BROWSER}    	options=add_argument("----window-size=1325x744")
     Set Window Size    800    600
     #Maximize Browser Window
 
