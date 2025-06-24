@@ -32,9 +32,10 @@ Close Ad If seen
 
 Open Web Page
     [Documentation]    open webpage where test will run
-    Open Browser    ${HOMEPAGE}    ${BROWSER}    options=add_argument("----window-size=1325x744")
-    Set Window Size    800    600
-    #Maximize Browser Window
+    Open Browser    ${HOMEPAGE}    ${BROWSER}    options=add_argument("--start-maximized")
+#    Set Window Size    800    600
+#    Maximize Browser Window
+#    Capture Page Screenshot
 
 Get Current Date As Datetime Format
     [Documentation]    get the current date in computer where running test
