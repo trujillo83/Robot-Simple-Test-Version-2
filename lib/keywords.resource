@@ -63,7 +63,7 @@ Create File With Found Menus
 Look For Element and Get Text
     [Documentation]    Search in webpage with given element
     [Arguments]    ${search_element}
-    [Setup]    Press submenu if seen
+    #[Setup]    Press submenu if seen
     Wait Until Page Contains Element    ${ID_BUTTON_OPEN_SEARCH}    timeout=5s
     Click Element    ${ID_BUTTON_OPEN_SEARCH}
     Sleep  2s
